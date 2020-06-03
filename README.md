@@ -1,0 +1,1 @@
+# Test Coveralls in Ruby
