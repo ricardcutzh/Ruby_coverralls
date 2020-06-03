@@ -4,4 +4,5 @@ phases:
     build:
       commands:
         - echo "hello world"
+        - bundle install
         - ruby test.rb
