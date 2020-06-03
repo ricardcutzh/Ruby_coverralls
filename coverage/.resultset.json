@@ -1,0 +1,26 @@
+{
+  "Unit Tests": {
+    "coverage": {
+      "/home/example.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      }
+    },
+    "timestamp": 1591220299
+  },
+  "test:units": {
+    "coverage": {
+      "/home/example.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      }
+    },
+    "timestamp": 1591224629
+  }
+}
