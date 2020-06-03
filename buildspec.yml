@@ -3,6 +3,7 @@ version: 0.2
 phases:
     build:
       commands:
+        - export CI=true
         - echo "hello world"
         - bundle install
         - ruby test.rb
