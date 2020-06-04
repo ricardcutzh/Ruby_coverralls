@@ -23,4 +23,8 @@ class TestCoverage < Test::Unit::TestCase
     def test_one
         assert_equal(34, return_value(34))
     end
+
+    def test_two
+        assert_equal(35, return_value_new(35))
+    end
 end
