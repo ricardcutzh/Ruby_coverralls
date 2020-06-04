@@ -4,6 +4,7 @@ phases:
     build:
       commands:
         - export CI=true
+        - gem install coveralls-lcov
         - echo "hello world"
         - bundle install
-        - ruby test.rb
+        - coveralls-lcov --repo-token $COVERALLS_REPO_TOKEN coverage/lcov.info

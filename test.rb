@@ -1,6 +1,7 @@
+require 'coveralls'
+Coveralls.wear!
 require 'simplecov'
 require 'simplecov-lcov'
-require 'coveralls'
 require 'test-unit'
 
 SimpleCov::Formatter::LcovFormatter.config do |c|
@@ -15,7 +16,6 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
 )
 SimpleCov.command_name 'test:units'
 SimpleCov.start 'rails'
-Coveralls.wear!
 
 require_relative 'example.rb'
 

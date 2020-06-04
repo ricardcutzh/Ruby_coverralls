@@ -1,15 +1,8 @@
 {
   "Unit Tests": {
     "coverage": {
-      "/home/example.rb": {
-        "lines": [
-          1,
-          1,
-          null
-        ]
-      }
     },
-    "timestamp": 1591220299
+    "timestamp": 1591229504
   },
   "test:units": {
     "coverage": {
@@ -21,6 +14,6 @@
         ]
       }
     },
-    "timestamp": 1591224629
+    "timestamp": 1591229684
   }
 }
