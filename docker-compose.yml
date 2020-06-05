@@ -3,9 +3,9 @@ services:
   postgres:
     image: postgres:10.8
     environment:
-      - POSTGRES_USER: postgres
-      - POSTGRES_PASSWORD: postgres
-      - POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
     ports:
       - 5432:5432
     healthcheck:
