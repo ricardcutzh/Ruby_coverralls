@@ -9,9 +9,11 @@ phases:
         - git clone https://$GIT_TOKEN:x-oauth-basic@github.com/XclaimInc/xclaim-web.git
         - mv docker-compose-e2e.yml xclaim-api/
         - cd xclaim-api/
+        - gem install coveralls-lcov
         - docker-compose -f docker-compose-e2e.yml build
         - docker-compose -f docker-compose-e2e.yml run xapi bundle exec rake db:create
         - docker-compose -f docker-compose-e2e.yml run testrunner
+        - coveralls-lcov --repo-token $COVERALLS_REPO_TOKEN tmp/coverage/lcov.info
         # - docker-compose up -d
         # - export CI=true
         # - gem install coveralls-lcov
