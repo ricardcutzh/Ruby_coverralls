@@ -17,6 +17,7 @@ services:
     command: bash -c "rm -f tmp/pids/server.pid && RAILS_ENV=test bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - $HOME/.aws:/root/.aws:ro
+      - ./tmp:/app/tmp
     ports:
       - "3001:3000"
     depends_on:
