@@ -4,8 +4,8 @@ phases:
     build:
       commands:
         - cd ..
-        - git clone https://$GIT_TOKEN:x-oauth-basic@github.com:XclaimInc/xclaim-api.git
-        - git clone https://$GIT_TOKEN:x-oauth-basic@@github.com:XclaimInc/xclaim-web.git
+        - git clone https://$GIT_TOKEN:x-oauth-basic@github.com/XclaimInc/xclaim-api.git
+        - git clone https://$GIT_TOKEN:x-oauth-basic@@github.com/XclaimInc/xclaim-web.git
         - ls
         # - docker-compose up -d
         # - export CI=true
