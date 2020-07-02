@@ -1,0 +1,79 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: app_test
+      POSTGRES_USER: postgres
+  redis:
+    image: redis
+  xapi:
+    build:
+      context: .
+      args:
+        - BUNDLE_GEMS__CONTRIBSYS__COM
+    image: api
+    command: bash -c "rm -f tmp/pids/server.pid && RAILS_ENV=test bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - $HOME/.aws:/root/.aws:ro
+    ports:
+      - "3001:3000"
+    depends_on:
+      - db
+      - redis
+    environment:
+      - HOST=0.0.0.0
+      - PORT=3000
+      - CORS_ALLOWED_ORIGIN=http://localhost:3000
+      - E2E_TESTING=1
+      - DEV_MAILER_DELIVERY_METHOD=smtp
+      - SMTP_HOST=mailcatcher
+      - DS_PRIVATE_KEY=
+      - DATABASE_ENDPOINT=db
+      - DATABASE_PORT=5432
+      - DATABASE_NAME=app_development
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=test
+      - COURTS_ENV=test
+  web:
+    build: ../xclaim-web
+    command: yarn start
+    ports:
+      - "3000:3000"
+    depends_on:
+      - xapi
+    environment:
+      - REACT_APP_GRAPHQL_URL=http://localhost:3001/graphql/
+      - REACT_APP_SENTRY_DSN=
+      - REACT_APP_ENVIRONMENT=development
+  testrunner:
+    build:
+      context: .
+      args:
+        - BUNDLE_GEMS__CONTRIBSYS__COM
+    image: api
+    command: bash -c "sleep 30 && bundle exec rspec --tag e2e" # sleeping to let web come up first, but its not enough?
+    volumes:
+      - $HOME/.aws:/root/.aws:ro
+    depends_on:
+      - web
+    environment:
+      - HOST=0.0.0.0
+      - PORT=3002
+      - CORS_ALLOWED_ORIGIN=http://localhost:3000
+      - E2E_TESTING=1
+      - DEV_MAILER_DELIVERY_METHOD=smtp
+      - SMTP_HOST=mailcatcher
+      - DS_PRIVATE_KEY=
+      - DATABASE_ENDPOINT=db
+      - DATABASE_PORT=5432
+      - DATABASE_NAME=app_development
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=test
+      - COURTS_ENV=test
+      - REDIS_ENDPOINT=redis
+      - DEFAULT_MAILER_ADDRESS=no-reply@x-claim.com
+      - SFTP_BUCKET_NAME=
+      - XCLAIM_EIN=
+      - DS_ACCOUNT_ID=

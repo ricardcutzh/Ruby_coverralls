@@ -3,6 +3,7 @@ version: 0.2
 phases:
     build:
       commands:
+        - mv docker-compose-e2e.yml ..
         - cd ..
         - git clone https://$GIT_TOKEN:x-oauth-basic@github.com/XclaimInc/xclaim-api.git
         - git clone https://$GIT_TOKEN:x-oauth-basic@github.com/XclaimInc/xclaim-web.git
