@@ -17,7 +17,6 @@ services:
     command: bash -c "rm -f tmp/pids/server.pid && RAILS_ENV=test bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - $HOME/.aws:/root/.aws:ro
-      - ./tmp:/app/tmp
     ports:
       - "3001:3000"
     depends_on:
@@ -57,6 +56,7 @@ services:
     command: bash -c "sleep 30 && bundle exec rspec --tag e2e" # sleeping to let web come up first, but its not enough?
     volumes:
       - $HOME/.aws:/root/.aws:ro
+      - ./tmp:/app/tmp
     depends_on:
       - web
     environment:
