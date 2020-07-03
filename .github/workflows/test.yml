@@ -12,3 +12,4 @@ jobs:
       - run: ls
       - run: mv docker-compose-e2e.yml ..
       - run: cd ..
+      - run: ls
