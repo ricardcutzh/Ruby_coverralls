@@ -10,3 +10,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: ls
+      - run: mv docker-compose-e2e.yml ..
+      - run: cd ..
