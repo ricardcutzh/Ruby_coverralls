@@ -25,6 +25,4 @@ jobs:
       - working-directory: ../
         run: mv docker-compose-e2e.yml xclaim-api/
       - working-directory: xclaim-api/
-        run: gem install coveralls-lcov
-      - working-directory: xclaim-api/
-        run: ls
+        run: docker-compose -f docker-compose-e2e.yml build
