@@ -14,3 +14,13 @@ jobs:
       - name: setting up
         working-directory: ../
         run: ls
+      - env: 
+          GIT_TOKEN: ${{secrets.GIT_TOKEN}}
+        working-directory: ../
+        run: git clone https://$GIT_TOKEN:x-oauth-basic@github.com/XclaimInc/xclaim-api.git
+      - env: 
+          GIT_TOKEN: ${{secrets.GIT_TOKEN}}
+        working-directory: ../
+        run: git clone https://$GIT_TOKEN:x-oauth-basic@github.com/XclaimInc/xclaim-web.git
+      - working-directory: ../
+        run: ls
