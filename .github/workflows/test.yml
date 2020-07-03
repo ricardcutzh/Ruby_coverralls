@@ -31,4 +31,6 @@ jobs:
       - working-directory: ../xclaim-api/
         run: docker-compose -f docker-compose-e2e.yml run xapi bundle exec rake db:create
       - working-directory: ../xclaim-api/
+        env:
+          COVERALLS_REPO_TOKEN: ${{secrets.COVERALLS_REPO_TOKEN}}
         run: docker-compose -f docker-compose-e2e.yml run testrunner || true

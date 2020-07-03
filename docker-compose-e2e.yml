@@ -79,3 +79,4 @@ services:
       - XCLAIM_EIN=
       - DS_ACCOUNT_ID=
       - CI=true
+      - COVERALLS_REPO_TOKEN=${COVERALLS_REPO_TOKEN}
